@@ -1,0 +1,638 @@
+  <!DOCTYPE html>
+  <html>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  <meta content="utf-8" http-equiv="encoding">    <head>
+  <title>Laravel</title>
+  <link href="//fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+  <!-- Latest compiled and minified JavaScript -->
+  </head>
+  <style type="text/css">
+  #logo{
+    background-color:#308db9;
+    color:white;
+    position:relative;
+    top:-1px;
+    box-shadow: 1px 3px 3px 2px #246a8b;
+
+  };
+  #backdrop{
+    background-repeat: repeat-x;
+    background-color:#308db9;
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:1;
+  };
+body {
+  overflow: hidden;
+}
+
+/* Preloader */
+
+#preloader {
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background-color:#fff; /* change if the mask should have another color then white */
+    z-index:99; /* makes sure it stays on top */
+}
+
+#status {
+    width:1200px;
+    height:800px;
+    position:absolute;
+    left:22%; /* centers the loading animation horizontally one the screen */
+    top:40%; /* centers the loading animation vertically one the screen */
+    /*background-image:url(../img/status.gif); /* path to your loading animation */
+    background-repeat:no-repeat;
+    background-position:center;
+    margin:-100px 0 0 -100px; /* is width and height divided by two */
+}
+
+
+.st0{
+clip-rule:evenodd;
+fill:white;
+stroke:#020202;
+stroke-width:4;
+stroke-dasharray: 40000px;
+stroke-dashoffset: -6000px;
+-webkit-animation: draw 4s linear forwards;
+-moz-animation: draw 4s linear forwards;
+-o-animation: draw 4s linear forwards;
+animation: draw 4s linear forwards;
+}
+
+.st01{
+position:relative;
+top:0px;
+left:-80px;
+clip-rule:evenodd;
+fill:white;
+stroke:#020202;
+stroke-width:1;
+stroke-dasharray: 40000px;
+stroke-dashoffset: -6000px;
+-webkit-animation: sketch 4s linear forwards;
+-moz-animation: sketch 4s linear forwards;
+-o-animation: sketch 4s linear forwards;
+animation: sketch 4s linear forwards; 
+}
+
+.st02{
+position:relative;
+top:0px;
+left:-80px;
+clip-rule:evenodd;
+stroke-width:2;
+stroke-dasharray: 40000px;
+stroke-dashoffset: -60000px;
+-webkit-animation: profile 4s linear forwards;
+-moz-animation: profile 4s linear forwards;
+-o-animation: profile 4s linear forwards;
+animation: profile 4s linear forwards; 
+}
+.st03{
+position:relative;
+top:0px;
+left:-80px;
+clip-rule:evenodd;
+stroke-width:2;
+stroke-dasharray: 40000px;
+stroke-dashoffset: -60000px;
+-webkit-animation: pluss 6s linear forwards;
+-moz-animation: pluss 6s linear forwards;
+-o-animation: pluss 6s linear forwards;
+animation: pluss 6s linear forwards; 
+}
+
+#plus{
+    position: absolute;
+ -webkit-animation:spin 4s linear forwards;
+    -moz-animation:spin 4s linear forwards;
+    animation:spin 4s linear forwards;
+}
+
+@-moz-keyframes spin{
+    from {
+        transform:rotate(40deg) translateX(40px);
+         }
+    50% {
+        transform:rotate(20deg)translateX(5px);
+      }
+    to{
+        transform:rotate(0deg)translateX(0px);
+      } 
+    }
+@-webkit-keyframes spin{
+    from {
+        transform:rotate(40deg) translateX(40px);
+         }
+    50% {
+        transform:rotate(20deg)translateX(5px);
+      }
+    to{
+        transform:rotate(0deg)translateX(0px);
+      } 
+    }
+@keyframes spin{
+    from {
+        transform:rotate(40deg) translateX(40px);
+         }
+    50% {
+        transform:rotate(20deg)translateX(5px);
+      }
+    to{
+        transform:rotate(0deg)translateX(0px);
+      } 
+    }  
+
+@-webkit-keyframes draw {
+        from {
+            stroke-dashoffset: -1000px;
+            fill:white;
+        }
+        50%{
+            stroke-dashoffset: 0px ;
+            fill:white;
+        }
+        to {
+            stroke-dashoffset: 0px ;
+            fill:#781F19; 
+
+        }
+    }
+@-moz-keyframes draw {
+        from {
+            stroke-dashoffset: -1000px;
+            fill:white;
+        }
+        50%{
+            stroke-dashoffset: 0px ;
+            fill:white;
+        }        
+        to {
+            stroke-dashoffset: 0px;
+            fill:#781F19; 
+        }
+    }
+@-o-keyframes draw {
+        from {
+            stroke-dashoffset: -1000px;
+            fill:white;
+        }
+        50%{
+            stroke-dashoffset: 0px ;
+            fill:white;
+        }
+                to {
+            stroke-dashoffset: 0px ;
+            fill:#781F19; 
+ 
+        }
+    }
+@keyframes draw {
+        from {
+            stroke-dashoffset: -1000px;
+            fill:white;
+        }
+        50%{
+            stroke-dashoffset: 0px ;
+            fill:white;
+        }
+       to {
+            stroke-dashoffset: 0px  ;
+            fill:#781F19; 
+
+        }
+    }
+
+@-webkit-keyframes sketch{
+        from {
+            stroke-dashoffset: -1000px;
+            fill:white;
+        }
+        50%{
+            stroke-dashoffset: 0px ;
+            fill:white;
+        }
+        to {
+            stroke-dashoffset: 0px ;
+            fill:#781F19; 
+
+        }
+    }
+@-moz-keyframes sketch{
+        from {
+            stroke-dashoffset: -1000px;
+            fill:white;
+        }
+        50%{
+            stroke-dashoffset: 0px ;
+            fill:white;
+        }
+        to {
+            stroke-dashoffset: 0px;
+            fill:#781F19; 
+        }
+    }
+@-o-keyframes sketch{
+        from {
+            stroke-dashoffset: -1000px;
+            fill:white;
+        }
+        50%{
+            stroke-dashoffset: 0px ;
+            fill:white;
+        }
+        to {
+            stroke-dashoffset: 0px ;
+            fill:#781F19; 
+ 
+        }
+    }
+@keyframes sketch{
+        from {
+            stroke-dashoffset: -1000px;
+            fill:white;
+        }
+        50%{
+            stroke-dashoffset: 0px ;
+            fill:white;
+        }
+        to {
+            stroke-dashoffset: 0px  ;
+            fill:#781F19; 
+
+        }
+    }
+@-webkit-keyframes profile {
+        from {
+            stroke-dashoffset: -400px;
+            zoom:1;
+        }
+
+        to {
+            stroke-dashoffset: 0px ;
+            zoom:2;
+        }
+    }
+@-moz-keyframes profile {
+        from {
+            stroke-dashoffset: -400px;
+            zoom:1;
+        }
+        to{
+            stroke-dashoffset: 0px ;
+            zoom:2;
+        }
+    }
+@-o-keyframes profile{
+        from {
+            stroke-dashoffset: -400px;
+            zoom:1;
+        }
+
+                to {
+            stroke-dashoffset: 0px ;
+            zoom:2;
+        }
+    }
+@keyframes profile{
+        from {
+            stroke-dashoffset: -400px;
+            zoom:1;
+        }
+
+       to {
+            stroke-dashoffset: 0px  ;
+            zoom:2;
+        }
+    }
+@-webkit-keyframes pluss {
+        from {
+            stroke-dashoffset: -40px;
+            transform:rotate(0.5deg);
+
+        }
+        70%{
+            stroke-dashoffset: -40px ;
+            transform:rotate(0.5deg);
+        }
+        80%{
+            stroke-dashoffset: 0px  ;
+            transform:rotate(0.3deg);
+        }
+        96%{
+             stroke-dashoffset: 0px  ;
+            transform:rotate(0.3deg);
+        }
+       to {
+            stroke-dashoffset: 0px  ;
+            transform:rotate(0deg);
+        }
+    }
+@-moz-keyframes pluss {
+        from {
+            stroke-dashoffset: -40px;
+            transform:rotate(0.5deg);
+
+        }
+        70%{
+            stroke-dashoffset: -40px ;
+            transform:rotate(0.5deg);
+        }
+        80%{
+            stroke-dashoffset: 0px  ;
+            transform:rotate(0.3deg);
+        }
+        96%{
+             stroke-dashoffset: 0px  ;
+            transform:rotate(0.3deg);
+        }
+       to {
+            stroke-dashoffset: 0px  ;
+            transform:rotate(0deg);
+        }
+    }yframes pluss{
+        from {
+            stroke-dashoffset: -40px;
+            transform:rotate(0.5deg);
+
+        }
+        70%{
+            stroke-dashoffset: -40px ;
+            transform:rotate(0.5deg);
+        }
+        80%{
+            stroke-dashoffset: 0px  ;
+            transform:rotate(0.3deg);
+        }
+        96%{
+             stroke-dashoffset: 0px  ;
+            transform:rotate(0.3deg);
+        }
+       to {
+            stroke-dashoffset: 0px  ;
+            transform:rotate(0deg);
+        }
+    }
+@keyframes pluss{
+        from {
+            stroke-dashoffset: -40px;
+            transform:rotate(0.5deg);
+
+        }
+        70%{
+            stroke-dashoffset: -40px ;
+            transform:rotate(0.5deg);
+        }
+        80%{
+            stroke-dashoffset: 0px  ;
+            transform:rotate(0.3deg);
+        }
+        96%{
+             stroke-dashoffset: 0px  ;
+            transform:rotate(0.3deg);
+        }
+       to {
+            stroke-dashoffset: 0px  ;
+            transform:rotate(0deg);
+        }
+    }
+  </style>
+  <body>
+    <!-- Preloader -->
+<div id="preloader">
+    <div id="status" class="container-fluid">
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 150" enable-background="new 0 0 500 150" xml:space="preserve">
+<g id="Layer_1">
+  <path class="st02" fill="#07A6D9" stroke="#000000" stroke-width="4" stroke-miterlimit="10" d="M249.115,28.279c0,0-23.49-6.273-33.557,14.776
+    c0,0-1.342,12.069,0,20.794h-8.725c0,0-14.766,6.045,0,11.412H216.9v51.484c0,0,4.459,10.308,14.766,0V75.261h10.066
+    c0,0,13.424-8.057-0.67-11.412h-12.752c0,0-5.369-25.503,16.778-25.503S249.115,28.279,249.115,28.279z"/>
+  <path class="st02" fill="#07A6D9" stroke="#000000" stroke-width="4" stroke-miterlimit="10" d="M265.773,50.947c0,0-14.43,1.437,0,15.867
+    C265.773,66.814,273.612,58.786,265.773,50.947z"/>
+  <path class="st02" fill="#07A6D9" stroke="#000000" stroke-width="4" stroke-miterlimit="10" d="M257.15,88.529v-4.541
+    c0,0,7.717-12.712,14.527,0v39.952c0,0-6.355,14.528-14.527,0V88.529z"/>
+  <path class="st02" fill="#07A6D9" stroke="#000000" stroke-width="4" stroke-miterlimit="10" d="M289.767,32.602c0,0,5.043-14.855,8.711,0
+    v71.535c0,0,0.458,10.449,11.004,14.298c10.546,3.849,5.043,13.207,0,12.104s-19.716-1.636-21.091-26.403
+    C287.016,79.369,289.767,32.602,289.767,32.602z"/>
+  <path class="st02" fill="#07A6D9" stroke="#000000" stroke-width="4" stroke-miterlimit="10" d="M43.983,74.779l2.836,47.058
+    c0,0,4.305,17.385,13.996-1.486V98.243V79.88c0,0,35.702-2.04,30.092-31.624c-5.61-29.583-33.153-29.583-33.153-29.583H43.983
+    V74.779z"/>
+  <path class="st02" stroke="#FFFFFF" stroke-width="2" stroke-miterlimit="10" d="M54.599,36.115v29.53
+    C54.599,65.646,98.894,45.511,54.599,36.115z"/>
+  <path class="st02" fill="#07A6D9" stroke="#000000" stroke-width="4" stroke-miterlimit="10" d="M95.433,78.917c0,0,13.007-13.791,13.162,4.756
+    c0,0,10.356-16.657,23.853-6.463c0,0,5.9,7.413-2.832,10.271c-8.733,2.858-19.528-3.668-19.074,11.729
+    c0.454,15.396-3.131,29.534-9.075,29.437c-5.945-0.098-5.765-5.211-5.765-5.211L95.433,78.917z"/>
+  <path class="st02" fill="#07A6D9" stroke="#000000" stroke-width="4" stroke-miterlimit="10" d="M172.007,74.036c0,0-22.419-4.143-28.267,24.733
+    c-5.849,28.877,24.368,31.314,24.368,31.314s28.755,1.218,29.73-31.314C198.813,66.238,172.007,74.036,172.007,74.036z"/>
+  <polygon id="plus" stroke="#FFFFFF" stroke-width="2" stroke-miterlimit="10" points="439.76,57.567 420.199,57.567 420.199,79.244 
+    400.641,79.244 400.641,93.696 420.199,93.696 420.199,116.577 439.76,116.577 439.76,94.9 457.017,94.9 457.017,76.835 
+    438.607,78.04   "/>
+  <path class="st02" fill="#07A6D9" stroke="#000000" stroke-width="4" stroke-miterlimit="10" d="M369.154,111.812c0,0,12.033-8.053,6.168,5.746
+    c-5.867,13.801-24.842,11.854-23.254,12.74c1.59,0.887-45.073-2.444-21.191-50.08c0,0,21.52-19.048,37.477-4.751
+    c15.957,14.296,7.941,24.017,2.119,25.299c-5.822,1.282-31.934,1.28-31.934,1.28S333.381,134.3,369.154,111.812z"/>
+  <path class="st02" stroke="#FFFFFF" stroke-width="2" stroke-miterlimit="10" d="M339.455,93.583h25.576
+    C365.031,93.583,351.688,63.183,339.455,93.583z"/>
+  <path class="st02" stroke="#FFFFFF" stroke-width="2" stroke-miterlimit="10" d="M158.37,111.544c0,0-8.243-33.051,22.804-15.452
+    C181.174,96.092,185.59,128.915,158.37,111.544z"/>
+
+    <line class="st03"fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="424.055" y1="61.293" x2="423.991" y2="83.062"/>
+    <line class="st03"fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="404.739" y1="83.056" x2="424.489" y2="83.056"/>
+    <line class="st03"fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="405.156" y1="90.806" x2="405.156" y2="82.556"/>
+    <line class="st03"fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="424.056" y1="89.798" x2="404.74" y2="90.489"/>
+    <line class="st03"fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="423.656" y1="113.556" x2="423.656" y2="89.889"/>
+    <line class="st03"fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="436.906" y1="113.056" x2="423.656" y2="113.056"/>
+    <line class="st03"fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="435.906" y1="90.806" x2="436.906" y2="113.556"/>
+    <line class="st03"fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="454.989" y1="90.806" x2="435.291" y2="90.806"/>
+    <line class="st03"fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="454.406" y1="79.556" x2="454.406" y2="90.806"/>
+    <line class="st03"fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="435.513" y1="82.072" x2="454.768" y2="80.072"/>
+    <line class="st03"fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="436.155" y1="61.286" x2="435.274" y2="82.651"/>
+    <line class="st03"fill="none" stroke="#FFFFFF" stroke-miterlimit="10" x1="423.656" y1="61.806" x2="436.406" y2="61.806"/>
+</g>
+</g>
+</svg>
+
+  </div>
+</div>
+
+
+  <nav class="navbar navbar-inverse" style="z-index:3">
+  <div class="container-fluid">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+  <span class="sr-only">Toggle navigation</span>
+  <span class="icon-bar"></span>
+  <span class="icon-bar"></span>
+  <span class="icon-bar"></span>
+  </button>
+  <a class="navbar-brand " href="#" id="logo"><span class="glyphicon glyphicon-user" style="color:black;"></span> Profile-Plus</a>
+  </div>
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+  <ul class="nav navbar-nav">
+  <li ><a href="#">Link <span class="sr-only">(current)</span></a></li>
+  <li><a href="#">Link</a></li>
+  <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown1 <span class="caret"></span></a>
+  <ul class="dropdown-menu">
+  <li></li>
+  <li><a href="#">Another action</a></li>
+  <li><a href="#">Something else here</a></li>
+  <li role="separator" class="divider"></li>
+  <li><a href="#">Separated link</a></li>
+  <li role="separator" class="divider"></li>
+  <li><a href="#">One more separated link</a></li>
+  </ul>
+  </li>
+  </ul>
+  <form class="navbar-form navbar-left" role="search">
+      <div class="form-group">
+      <input type="text" class="form-control" placeholder="Search">
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+  <ul class="nav navbar-nav navbar-right">
+  <li><a href="#">Link</a></li>
+  <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+  <ul class="dropdown-menu">
+  <li><a href="#">Action</a></li>
+  <li><a href="#">Another action</a></li>
+  <li><a href="#">Something else here</a></li>
+  <li role="separator" class="divider"></li>
+  <li><a href="#">Separated link</a></li>
+  </ul>
+  </li>
+  </ul>
+  </div><!-- /.navbar-collapse -->
+</div><!-- /.container-fluid -->
+  </nav>
+
+  <div class="container-fluid" style="position:absolute;z-index:1;top:10px;height:auto;min-width:100%;">
+  <canvas id="canvas1" class="img-responsive" width="2600" height="1100"></canvas>
+  </div>
+
+
+  <center>
+    <div class="img-responsive container-fluid" style="position:absolute;z-index:-1;top:10px;height:auto;min-width:100%">
+<img src="fullbusiness.png" style="width:100%;height:1100px">
+    </div>
+
+  <div class="img- responsive container col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4" id="containing" style="position:absolute;top:120px;z-index:1;background-color:black;border-radius: 40px;border: 3px black solid;color:#308db9;opacity: 0.8;box-shadow: 3px 3px 13px 6px white;height:300px;">
+        <form action="bootins12.php" method="post">
+        <h2 style="opacity:1;text-shadow: 2px 2px #102e3c;">Welcome to IITM Profile Plus</h2>
+
+        <div class="form-group" >
+        <label style="opacity:1">RollNumber</label>
+        <input name="RollNumber" id="rollnumber" class="form-control"type="text" placeholder="DE15B002" required>
+        </div>
+ 
+        
+        <div class="form-group" >
+        <label style="opacity:1">Password</label>
+        <input name="Password" class="form-control" id="password" type="password" placeholder="Password" required>
+        </div>
+
+        <button type="submit" name="submit" class="btn btn-primary"  id="submit" disabled style="opacity:1">Submit</button>
+        </form>
+  </div>
+</center>
+</div> <!--container on whole-->
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  </body>
+
+
+  <script>
+
+
+
+"undefined"==typeof requestAnimationFrame&&(requestAnimationFrame="undefined"!=typeof window&&(window.msRequestAnimationFrame||window.mozRequestAnimationFrame||window.webkitRequestAnimationFrame||window.oRequestAnimationFrame)||function(e){return setTimeout(e,17)}),function(e,n){"object"==typeof exports&&"undefined"!=typeof module?n(exports):"function"==typeof define&&define.amd?define(["exports"],n):n(e.timer={})}(this,function(e){"use strict";function n(){r=m=0,c=1/0,t(u())}function t(e){if(!r){var t=e-Date.now();t>24?c>e&&(m&&clearTimeout(m),m=setTimeout(n,t),c=e):(m&&(m=clearTimeout(m),c=1/0),r=requestAnimationFrame(n))}}function i(e,n,i){i=null==i?Date.now():+i,null!=n&&(i+=+n);var o={callback:e,time:i,flush:!1,next:null};a?a.next=o:f=o,a=o,t(i)}function o(e,n,t){t=null==t?Date.now():+t,null!=n&&(t+=+n),l.callback=e,l.time=t}function u(e){e=null==e?Date.now():+e;var n=l;for(l=f;l;)e>=l.time&&(l.flush=l.callback(e-l.time,e)),l=l.next;l=n,e=1/0;for(var t,i=f;i;)i.flush?i=t?t.next=i.next:f=i.next:(i.time<e&&(e=i.time),i=(t=i).next);return a=t,e}var a,m,r,f,l,c=1/0;e.timer=i,e.timerReplace=o,e.timerFlush=u});
+
+var canvas = document.querySelector("canvas"),
+    context = canvas.getContext("2d"),
+    width = canvas.width,
+    height = canvas.height,
+    radius = 4,
+    minDistance = 40,
+    maxDistance = 60,
+    minDistance2 = minDistance * minDistance,
+    maxDistance2 = maxDistance * maxDistance;
+
+var tau = 2 * Math.PI,
+    n = 450,
+    particles = new Array(n);
+
+for (var i = 0; i < n; ++i) {
+  particles[i] = {
+    x: Math.random() * width,
+    y: Math.random() * height,
+    vx: 0,
+    vy: 0
+  };
+}
+
+timer.timer(function(elapsed) {
+  context.save();
+  context.clearRect(0, 0, width, height);
+
+  for (var i = 0; i < n; ++i) {
+    var p = particles[i];
+    p.x += p.vx; if (p.x < -maxDistance) p.x += width + maxDistance * 2; else if (p.x > width + maxDistance) p.x -= width + maxDistance * 2;
+    p.y += p.vy; if (p.y < -maxDistance) p.y += height + maxDistance * 2; else if (p.y > height + maxDistance) p.y -= height + maxDistance * 2;
+    p.vx += 0.2 * (Math.random() - .5) - 0.01 * p.vx;
+    p.vy += 0.2 * (Math.random() - .5) - 0.01 * p.vy;
+    context.beginPath();
+    context.arc(p.x, p.y, radius, 0, tau);
+    context.fillStyle="black"
+    context.fill();
+  }
+
+  for (var i = 0; i < n; ++i) {
+    for (var j = i + 1; j < n; ++j) {
+      var pi = particles[i],
+          pj = particles[j],
+          dx = pi.x - pj.x,
+          dy = pi.y - pj.y,
+          d2 = dx * dx + dy * dy;
+      if (d2 < maxDistance2) {
+        context.globalAlpha = d2 > minDistance2 ? (maxDistance2 - d2) / (maxDistance2 - minDistance2) : 1;
+        context.beginPath();
+        context.moveTo(pi.x, pi.y);
+        context.lineTo(pj.x, pj.y);
+        context.strokeStyle="black";
+        context.lineWidth=3;
+        context.stroke();
+      }
+    }
+  }
+
+  context.restore();
+});
+
+</script>
+<!-- Preloader -->
+<script type="text/javascript">
+  //<![CDATA[
+    $(window).load(function() { // makes sure the whole site is loaded
+      $('#status').delay(6000).fadeOut(); // will first fade out the loading animation
+      $('#preloader').delay(6000).fadeOut('slow'); // will fade out the white DIV that covers the website.
+      $('body').delay(6000).css({'overflow':'visible'});
+    })
+  //]]>
+</script>
+</html>
