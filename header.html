@@ -531,24 +531,31 @@ animation: pluss 6s linear forwards;
     </div>
 
   <div class="img- responsive container col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4" id="containing" style="position:absolute;top:120px;z-index:1;background-color:black;border-radius: 40px;border: 3px black solid;color:#308db9;opacity: 0.8;box-shadow: 3px 3px 13px 6px white;height:300px;">
-        <form action="bootins12.php" method="post">
+
+        <form  onsubmit="javascript:submit_login();return false;" >
         <h2 style="opacity:1;text-shadow: 2px 2px #102e3c;">Welcome to IITM Profile Plus</h2>
 
         <div class="form-group" >
         <label style="opacity:1">RollNumber</label>
-        <input name="RollNumber" id="rollnumber" class="form-control"type="text" placeholder="DE15B002" required>
+        <input  id="rollnumber" class="form-control"type="text" placeholder="DE15B002" required>
         </div>
  
         
         <div class="form-group" >
         <label style="opacity:1">Password</label>
-        <input name="Password" class="form-control" id="password" type="password" placeholder="Password" required>
+        <input  class="form-control" id="password" type="password" placeholder="Password" required>
         </div>
 
-        <button type="submit" name="submit" class="btn btn-primary"  id="submit" disabled style="opacity:1">Submit</button>
+        <button type="submit"  class="btn btn-primary"  id="submit" style="opacity:1">Submit</button>
         </form>
+
   </div>
 </center>
+
+<div id="show">
+
+</div>
+
 </div> <!--container on whole-->
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -629,10 +636,34 @@ timer.timer(function(elapsed) {
 <script type="text/javascript">
   //<![CDATA[
     $(window).load(function() { // makes sure the whole site is loaded
-      $('#status').delay(6000).fadeOut(); // will first fade out the loading animation
-      $('#preloader').delay(6000).fadeOut('slow'); // will fade out the white DIV that covers the website.
-      $('body').delay(6000).css({'overflow':'visible'});
-    })
+      $('#status').delay(600).fadeOut(); // will first fade out the loading animation
+      $('#preloader').delay(600).fadeOut('slow'); // will fade out the white DIV that covers the website.
+      $('body').delay(600).css({'overflow':'visible'});
+    }); 
   //]]>
+document.getElementById("show").innerHTML="Response";
+
+function submit_login(){
+
+var rollno= document.getElementById("rollnumber").value;
+var password=document.getElementById("password").value;
+console.log(rollnumber+password);
+
+var url = "https://students.iitm.ac.in/mobapi/ldap/login.php";
+var params = "roll="+rollno+"&pass="+password;
+var xhr = new XMLHttpRequest(); 
+xhr.onreadystatechange = function(){
+  if (xhr.readyState == 4 && xhr.status == 200) {
+    document.getElementById("show").innerHTML=xhr.responseText;
+    }
+  else{
+    document.getElementById("show").innerHTML="Response:failed";
+  }
+};
+xhr.open("POST", url, true);
+xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+xhr.send(params);
+
+};
 </script>
 </html>
