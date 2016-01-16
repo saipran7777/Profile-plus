@@ -501,7 +501,7 @@ animation: pluss 6s linear forwards;
       <div class="form-group">
       <input type="text" class="form-control" placeholder="Search">
       </div>
-      <button type="submit" class="btn btn-default">Submit</button>
+      <button type="button" class="btn btn-default">Submit</button>
   </form>
   <ul class="nav navbar-nav navbar-right">
   <li><a href="#">Link</a></li>
@@ -655,6 +655,12 @@ var xhr = new XMLHttpRequest();
 xhr.onreadystatechange = function(){
   if (xhr.readyState == 4 && xhr.status == 200) {
     document.getElementById("show").innerHTML=xhr.responseText;
+    var response = JSON.parse(xhr.responseText);
+    var username = response[0].username;
+    var fullname = response[0].fullname;
+    var hostel   = response[0].hostel;
+    document.cookie="ckuser="+username+";ckname="+fullname+";ckhostel="+hostel;
+    
     }
   else{
     document.getElementById("show").innerHTML="Response:failed";

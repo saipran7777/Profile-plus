@@ -5,9 +5,20 @@
 
         <link href="//fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
         <link href="{!! asset('css/bootstrap.css') !!}" media="all" rel="stylesheet" type="text/css" />
+        <link href="{!! asset('css/bootstrap.css') !!}" media="all" rel="stylesheet" type="text/css" />
     </head>
+    <style type="text/css">
+      #logo{
+    background-color:#308db9;
+    color:white;
+    position:relative;
+    top:-1px;
+    box-shadow: 1px 3px 3px 2px #246a8b;
+
+  };
+    </style>
     <body>
-        <nav class="navbar navbar-default">
+        <nav class="navbar navbar-inverse">
           <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -17,7 +28,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="#">ProfilePlus</a>
+              <a class="navbar-brand" href="#" id="logo"><span class="glyphicon glyphicon-user" style="color:black;"></span>Profile-Plus</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
