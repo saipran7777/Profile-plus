@@ -1,6 +1,16 @@
 @extends('layouts/header')
 
 @section('Content')
+<style type="text/css">
+#content{
+	z-index: 15;
+	top: 100px;
+	position: absolute;
+	width: 100%;
+ 
+}
+</style>
+<div class="container-fluid" id="content">
 	<h3 class='text-center'>Approved PORs</h3>
 	<?php
 		$id=1;
@@ -37,4 +47,5 @@
 			}
 		}
 	?>
+</div>
 @endsection

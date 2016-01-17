@@ -26,7 +26,7 @@
     display: block;
   }
   #content{
-     background-color:#308db9;
+
      z-index: 10;
   }
     </style>
