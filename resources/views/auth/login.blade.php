@@ -10,11 +10,16 @@
 	position: absolute;
 	text-align: center;
 	min-height: 200px;
-	margin-top: 100px;
+	z-index: 15;
+	top: 200px;
+}
+#submit{
+	background-color: #308db9;
+	color: white;
 }
 </style>
 @section('Content')
-<form id="form" class="col-lg-4 col-lg-offset-3">
+<div id="form" class="col-lg-4 col-lg-offset-4">
 	<h2 style="opacity:1;text-shadow: 2px 2px #102e3c;">Welcome to IITM Profile Plus</h2>
 	{!! Form::open(array('method'=>'POST')) !!}
 	<div class="form-group" >
@@ -24,8 +29,8 @@
 	<div class="form-group" >
 		{!! Form::label('Password','Password') !!}
 		{!! Form::password('Password') !!}
-	</div>
-		{!! Form::submit('Submit') !!}
+	</div >
+		{!! Form::submit('Submit',['id'=>'submit']) !!}
 	{!! Form::close() !!}
-</form>
+</div>
 @endsection
